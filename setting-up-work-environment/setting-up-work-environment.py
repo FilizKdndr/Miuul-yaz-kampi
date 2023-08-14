@@ -49,6 +49,12 @@ print(e)
 # Sanal ortamı aktif etme:
 # conda activate myenv
 
+#Sanal ortamdan çıkma
+#conda deactivate
+
+#Sanal ortamı silme
+#conda env remove -n myenv
+
 # Yüklü Paketlerin listelenmesi
 # conda list
 
@@ -78,4 +84,14 @@ print(e)
 # Paket yükleme versiyona göre
 #  pip install pandas==2.0.2
 
-#
+#paket silme
+# pip uninstall pandas
+
+#kütüphane bilgileri yer alıyor
+#conda env export > environment.yaml
+
+#dir --> bulunduğun dizindeki dosyaları listeliyor
+
+#yaml dosyasından paketleri alarak sanal ortam oluşturma
+#conda env create -f environment.yaml
+
