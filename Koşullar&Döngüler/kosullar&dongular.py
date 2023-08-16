@@ -137,7 +137,9 @@ while number < 5:
     print(number)
     number += 1
 
+#########################################################
 # Enummerate: Otomatik Counter/ Indexer ile for loop
+#########################################################
 
 students =  ["John", "Mark", "Venessa", "Mariam"]
 
@@ -148,8 +150,9 @@ for student in students:
 for index, student in enumerate(students):
     print(index,student)
 
-    A = []
-    B = []
+A = []
+B = []
+
 for index, student in enumerate(students):
    if index % 2 == 0:
        A.append(student)
@@ -159,11 +162,13 @@ for index, student in enumerate(students):
 print(A)
 print(B)
 
+###############################
 # Uygulama - mülakat sorusu
-# divide_students fonksiyonu yazınız
-# çift indexte yer alan öğrencileri bir listeye
-# tek indexte yer alan öğrencileri bir listeye
-# fakar bu iki liste tek bir liste olarak return olsun
+################################
+# divide_students fonksiyonu yazınız.
+# çift indexte yer alan öğrencileri bir listeye alınız.
+# tek indexte yer alan öğrencileri bir listeye alınız.
+# fakat bu iki liste tek bir liste olarak return olsun.
 
 students =  ["John", "Mark", "Venessa", "Mariam"]
 
@@ -175,15 +180,15 @@ def divide_students(students):
         else:
             groups[1].append(student)
     print(groups)
-
     return groups
 
 divide_students(students)
 
+########################################################
 # alternating fonksiyonunun enumerate ile yazılması
-
+########################################################
 def alternating_with_enumerate(string):
-    new_string =  ""
+    new_string = ""
     for i, letter in enumerate(string):
         if i % 2 == 0:
             new_string += letter.upper()
@@ -193,7 +198,9 @@ def alternating_with_enumerate(string):
 
     alternating_with_enumerate("merhaba ben python ogreniyom")
 
-# zip
+####################
+# Zip
+####################
 
 students = ["John", "Mark", "Venessa", "Mariam"]
 
@@ -202,202 +209,59 @@ departments =  ["mathematics", "statistics","physics","astronmy"]
 ages = [ 23, 30, 26, 22]
 
 list(zip(students,departments,ages))
+#farklı listeleri listeler halinde tek bir listede birleştirir.
 
+#################################
 # lambda, map, filter, reduce
-
+################################
 def summer(a, b):
     return a + b
 
-summer(1,3 )*9
+summer(1, 3) * 9
 
-new_sum = lambda a,b:a + b
+new_sum = lambda a,b:a + b #kullan at fonksiyonlardır.
 
 new_sum(4,5)
 
 # map
 
-
 salaries = [1000, 2000, 3000, 4000, 5000]
-
 def new_salary(x):
     return x* 20/100+x
 
 new_salary(5000)
 
-
 for salary in salaries:
     print(new_salary(salary))
 
-list(map(new_salary,salaries))
-
+list(map(new_salary,salaries)) #for döngüsü yazmadan üzerinde gezinebileceğin iterasyon ile aynı işlemi yapar.
 
 # del new_sum
 list(map(lambda x: x * 20 / 100 + x, salaries))
 
 # filter
-
 list_stroe = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-list(filter(lambda x: x % 2 == 0, list_stroe))
-
+list(filter(lambda x: x % 2 == 0, list_stroe)) #2'ye bölünenleri listeye alır.
 
 # reduce
-
 from functools import reduce
 list_stroe =  [1, 2, 3, 4]
 reduce(lambda a, b: a + b, list_stroe)
+####################################################
+string = "abracadabra"
+group = []
 
-# Comprehensions
+for index, letter in enumerate(string,1):# 1'in anlamı index'i 1'den başlat demek.
+    if index * 2 % 2 == 0:
+        group.append(letter)
 
-# List Comprehension
+print(group)
 
-salaries = [1000, 2000, 3000, 4000, 5000]
+city_name = ["Londan", "Paris", "Berlin"]
 
-def new_salary(x):
-    return x * 20 / 100 + x
+def plate(cities):
+    for index, city in enumerate(cities,1):
+        print(f"{index} : {city}")
+plate(city_name)
 
-for salary in salaries:
-    print(new_salary(salary))
-
-null_list = []
-
-for salary in salaries:
-    if salary >  3000:
-        null_list.append(new_salary(salary))
-    else:
-        null_list.append(new_salary(salary * 2))
-
- [new_salary(salary * 2) if salary < 3000 else new_salary(salary) for salary in salaries]
-
- [salary * 2 for salary in salaries]
-
-[salary * 2 for salary in salaries if salary < 3000 ]
-
-[salary * 2 for salary in salaries if salary < 3000 ]
-
-[salary * 2  if salary < 3000 else salary * 0 for salary in salaries]
-
-[new_salary(salary * 2)  if salary < 3000 else new_salary(salary * 0.2) for salary in salaries]
-
-
-students =  ["John", "Mark", "Venessa", "Maram"]
-
-students_no =  ["John", "Venessa"]
-
-[student.lower() if student in students_no else student.upper() for student in students]
-
-[student.upper() if student not in students_no else student.lower() for student in students]
-
-# Dict Comprehension
-
-dictionary =  { 'a': 1,
-                'b': 2,
-                'c': 3,
-                'd': 4}
-
-dictionary.keys()
-dictionary.values()
-dictionary.items()
-
-{k: v ** 2 for (k, v) in dictionary.items()}
-
-{k.upper(): v  for (k, v) in dictionary.items()}
-
-{k.upper(): v*2  for (k, v) in dictionary.items()}
-
-
-# Uygulama- Mülakat Sorusu
-
-# Amaç: çift sayıların karesi alınarak bir sözlüğe eklenmek istenmektedir
-# Keyler orjinal deerler valueler ise değiştirilmiş değerler olacaktır.
-
-numbers =  range(10)
-new_dict = {}
-
-for n in numbers:
-    if n % 2 == 0:
-        new_dict[n] = n ** 2
-
-{n: n ** 2 for n in numbers if n % 2 == 0}
-
-# List & Dict COmprehension Uygulamalar
-
-# Bir Veri Setindeki değişken isimlerini değiştirmek
-
-# before:
-# [ 'total', 'speeding', 'alcohol', 'not_dictracted', 'no_previous', 'ins_premium', 'ins_loses', 'abbrev']
-# [ 'TOTAL', 'SPEADING', 'ALCOHOL', 'NOT_DICTRACTED', 'NO_PREVIOUS', 'INS_PREMIUM', 'INS_LOSES', 'ABBREV']
-
-import seaborn as sns
-df = sns.load_dataset("car_crashes")
-df.columns
-
-for col in df.columns:
-    print(col.upper())
-
-A = []
-
-for col in df.columns:
-    A.append(col.upper())
-
-df.columns =  A
-
-df = sns.load_dataset("car_crashes")
-df.columns = [col.upper() for col in df.columns]
-
-# İsminde "INS" olan değişkenlerin başına FLAG diğerlerine NO_FLAG eklemek istiyoruz
-# before:  # [ 'TOTAL', 'SPEADING', 'ALCOHOL', 'NOT_DICTRACTED', 'NO_PREVIOUS', 'INS_PREMIUM', 'INS_LOSES', 'ABBREV']
-# after:   # [ 'NO_FLAG_TOTAL', 'NO_FLAG_SPEADING', 'NO_FLAG_ALCOHOL', 'NO_FLAG_NOT_DICTRACTED', 'NO_FLAG_NO_PREVIOUS', 'FLAG_INS_PREMIUM', 'FLAG_INS_LOSES', 'NO_FLAG_ABBREV']
-
-[col for col in df.columns if "INS" in col]
-
-["FLAG_"+ col for col in df.columns if "INS" in col]
-
-["FLAG_"+ col  if "INS" in col else "NO_FLAG_"+ col for col in df.columns]
-
-df.columns = ["FLAG_"+ col  if "INS" in col else "NO_FLAG_"+ col for col in df.columns]
-
-# Amaç key'i string , valuesi aşağıdaki gibi bir liste olan sözlük oluşturmak
-# Bu işlemi sadece sayısal değişkenler için yapmak istiyoruz
-# Output:
-# { 'total':['mean','min', 'max', 'var'] ,
-# 'speeding':['mean','min', 'max', 'var'] ,
-# 'alcohol':['mean','min', 'max', 'var'] ,
-# 'not_dictracted':['mean','min', 'max', 'var'] ,
-# 'no_previous':['mean','min', 'max', 'var'] ,
-# 'ins_premium':['mean','min', 'max', 'var'] ,
-# 'ins_loses':['mean','min', 'max', 'var'] }
-
-import seaborn as sns
-df = sns.load_dataset("car_crashes")
-df.columns
-
-num_cols =  [col for col in df.columns if df[col].dtype != "O"]
-soz = {}
-agg_list =  ["mean", "min", "max", "sum"]
-
-for col in num_cols:
-    soz[col] =  agg_list
-
-#kısa yol
-
-new_dict = {col: agg_list for col in num_cols}
-
-df[num_cols].head()
-
-df[num_cols].agg(new_dict)
-
-wages = [1000,2000,3000,4000,5000]
-new_wages =  lambda  x: x*0.20+x
-list(map(new_wages,wages))
-
-students = ["Denise", "Arsem","Tony","Audrey"]
-low =  lambda x: x[0].lower()
-print(list(map(low,students)))
-
-dictn = {"Denise": 10, "Arsen": 12, "Tony": 15, "Audrey": 17}
-new_dict =  {k: v*2 + 3 for (k, v) in dictn.items()}
-new_dict
-
-numbers = range(1,10)
-numsda = {n: n ** 2 for n in numbers if n %2 != 0}
