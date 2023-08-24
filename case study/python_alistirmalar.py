@@ -112,6 +112,24 @@ for index, ogrenciler in enumerate(ogrenciler,1):
 ders_kodu = ["CMP1005", "PSY1001", "HUK1005", "SEN2204"]
 kredi = [3, 4, 2, 4]
 kontenjan = [30, 75, 150,25]
+ders = []
+ders = list(zip(ders_kodu,kredi,kontenjan))
 
+for i in ders:
+    print(f"Kredisi {i[1]} olan {i[0]} kodlu dersin kontenjanı {i[2]} kişidir.")
 
+###############################################################################
+# Görev 8: Aşağıda 2 adet set verilmiştir. Sizden istenilen eğer 1. küme 2. kümeyi kapsiyor ise ortak elemanlarını
+# eğer kapsamıyor ise 2. kümenin 1. kümeden farkını yazdıracak fonksiyonu tanımlamanız beklenmektedir.
+###############################################################################
 
+kume1 = set(["data", "python"])
+kume2 = set(["data", "function", "qcut", "lambda", "python", "miuul"])
+
+def func_set(kume1,kume2):
+    if kume1.issuperset(kume2):
+        print(kume1.intersection(kume2))
+    else:
+        print(kume2.difference(kume1))
+
+func_set(kume1,kume2)
